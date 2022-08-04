@@ -1,0 +1,27 @@
+{
+  "identity": {
+    "address": {
+      "area": "Dubai",
+      "building": "Burj Khalifa",
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "flat": "1204",
+      "full": "1204 Burj Khalifa Dubai United Arab Emiratess",
+      "state": "Dubai"
+    },
+    "dateOfBirth": "2020-12-03T22:52:51.765Z",
+    "emailAddress": "mohoa@doe.com",
+    "identification": [],
+    "name": "Mohammad Omar Amr",
+    "nationality": "AE",
+    "numbers": [
+      {
+        "type": "mobile",
+        "value": "971501988265"
+      }
+    ]
+  },
+  "operationID": "DAPIBANK_AE_ENBD:23911aaf-56a8-46f2-a4ac-f564a1d48ad4",
+  "status": "done",
+  "success": true
+}

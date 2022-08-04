@@ -1,0 +1,89 @@
+{
+	"id": "51d28a32-6a22-4f8c-9bd4-64e5c4e0e888",
+	"name": "Dapi Postman Collection Environment",
+	"values": [
+		{
+			"key": "host",
+			"value": "https://api.dapi.com/v2",
+			"enabled": true
+		},
+		{
+			"key": "app_key",
+			"value": "YOUR_APP_KEY",
+			"enabled": true
+		},
+		{
+			"key": "app_secret",
+			"value": "YOUR_APP_SECRET",
+			"enabled": true
+		},
+		{
+			"key": "client_email",
+			"value": "YOUR_DASHBOARD_USERNAME",
+			"enabled": true
+		},
+		{
+			"key": "client_password",
+			"value": "YOUR_DASHBOARD_PASSWORD",
+			"enabled": true
+		},
+		{
+			"key": "dashboard_access_token",
+			"value": "YOUR_DASHBOARD_TOKEN_AFTER_LOGIN",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "SANDBOX_USERNAME",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "SANDBOX_PASSWORD",
+			"enabled": true
+		},
+		{
+			"key": "bank_id",
+			"value": "SANDBOX_BANK_ID",
+			"enabled": true
+		},
+		{
+			"key": "access_code",
+			"value": "ACCESS_CODE_FROM_CONNECT",
+			"enabled": true
+		},
+		{
+			"key": "connection_id",
+			"value": "CONNECTION_ID_FROM_CONNECT",
+			"enabled": true
+		},
+		{
+			"key": "user_secret",
+			"value": "USER_SECRET_FROM_CONNECT",
+			"enabled": true
+		},
+		{
+			"key": "access_token",
+			"value": "ACCESS_TOKEN_FROM_EXCHANGE_TOKEN",
+			"enabled": true
+		},
+		{
+			"key": "account_id",
+			"value": "ID_FROM_GET_ACCOUNTS",
+			"enabled": true
+		},
+		{
+			"key": "receiver_id",
+			"value": "RECEIVER_ID_FROM_GET_BENEFICIARIES",
+			"enabled": true
+		},
+		{
+			"key": "card_id",
+			"value": "CARD_ID_FROM_CARDS",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-07-14T06:48:15.283Z",
+	"_postman_exported_using": "Postman/8.6.1"
+}

@@ -1,0 +1,2475 @@
+{
+	"info": {
+		"_postman_id": "01c8c39d-59aa-4cd9-a8b7-25f9581a9e78",
+		"name": "Dapi Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18654192"
+	},
+	"item": [
+		{
+			"name": "Sandbox",
+			"item": [
+				{
+					"name": "Dashboard Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();",
+									"pm.environment.set(\"dashboard_access_token\", jsonData[\"jwt\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{client_email}}\",\r\n    \"password\": \"{{client_password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/clients/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{client_email}}\",\r\n    \"password\": \"{{client_password}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/clients/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"clients",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:18:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "515"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"companies\": [\n        {\n            \"billingEmail\": \"xekotof818@exoacre.com\",\n            \"companyID\": \"931b2ea9-dd51-43b8-b531-713a87057b2a\",\n            \"companyName\": \"Test Inc.\",\n            \"internalName\": \"\"\n        }\n    ],\n    \"jwt\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJRCI6ImQzZTQwMTE2LWM4NmYtNGNhYy1iNDlkLThjYzQwMWQxOTIyZiIsImNvbXBhbnlJRCI6IjkzMWIyZWE5LWRkNTEtNDNiOC1iNTMxLTcxM2E4NzA1N2IyYSIsImV4cCI6MTY1NTQ2MTA4MCwiaWF0IjoxNjU1Mzc0NjgwLCJqdGkiOiI0YWJlOTNhNS1iMjdlLTQ4MzUtYWU4My1hMDZlMzcyM2U5MTYifQ._tk1pE6tJMeroF3Nsx7t8ei20x6YDCCSaj5teiSd3Jo\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Sandbox User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dashboard_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"bankID\": \"{{bank_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/apps/sandbox/users/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"apps",
+								"sandbox",
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"bankID\": \"{{bank_id}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/apps/sandbox/users/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"apps",
+										"sandbox",
+										"users",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:07:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Sandbox User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dashboard_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/apps/sandbox/users/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"apps",
+								"sandbox",
+								"users",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/apps/sandbox/users/delete",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"apps",
+										"sandbox",
+										"users",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:11:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Sandbox Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dashboard_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appKey\": \"{{app_key}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/apps/sandbox/users/getAll",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"apps",
+								"sandbox",
+								"users",
+								"getAll"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appKey\": \"{{app_key}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/apps/sandbox/users/getAll",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"apps",
+										"sandbox",
+										"users",
+										"getAll"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:20:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2062"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sandboxUsers\": [\n        {\n            \"accounts\": [\n                {\n                    \"accountNumber\": \"1655374817420002211944\",\n                    \"accountType\": \"current\",\n                    \"balance\": 50000,\n                    \"currency\": {\n                        \"code\": \"AED\",\n                        \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n                    },\n                    \"iban\": \"DAPIBANKAELIV1655374817420002211944\",\n                    \"name\": \"current\",\n                    \"routingNumbers\": [],\n                    \"transactions\": []\n                }\n            ],\n            \"appKey\": \"b44f2cae86a26302006c2cad8ae718fa66c33d6217fac79e72e90cad5a28523e\",\n            \"bankID\": \"DAPIBANK_AE_LIV\",\n            \"beneficiaries\": [],\n            \"cards\": [\n                {\n                    \"amountDue\": 1856,\n                    \"availableBalance\": 10033.86,\n                    \"cardNumber\": \"XXXXXXXXXXXX5700\",\n                    \"creditLimit\": 15000,\n                    \"currency\": {\n                        \"code\": \"AED\",\n                        \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n                    },\n                    \"dueDate\": \"2021-06-04T00:00:00Z\",\n                    \"expiryDate\": \"2025-05-31T00:00:00Z\",\n                    \"name\": \"BASIC CREDIT\",\n                    \"outstandingBalance\": 4966,\n                    \"status\": \"active\",\n                    \"transactions\": [\n                        {\n                            \"afterAmount\": 10033.86,\n                            \"amount\": 4966,\n                            \"beforeAmount\": 14999.86,\n                            \"currency\": {\n                                \"code\": \"AED\",\n                                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n                            },\n                            \"date\": \"2021-04-12T07:13:17Z\",\n                            \"description\": \"Online banking\",\n                            \"details\": \"Online banking\",\n                            \"reference\": \"\",\n                            \"type\": \"credit\"\n                        }\n                    ],\n                    \"type\": \"credit\"\n                },\n                {\n                    \"amountDue\": 0,\n                    \"availableBalance\": 65252.36,\n                    \"cardNumber\": \"XXXXXXXXXXXX6153\",\n                    \"creditLimit\": 15000,\n                    \"currency\": {\n                        \"code\": \"AED\",\n                        \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n                    },\n                    \"dueDate\": null,\n                    \"expiryDate\": \"2025-05-31T00:00:00Z\",\n                    \"name\": \"BASIC DEBIT\",\n                    \"outstandingBalance\": 0,\n                    \"status\": \"active\",\n                    \"transactions\": [\n                        {\n                            \"afterAmount\": 65252.36,\n                            \"amount\": 1000,\n                            \"beforeAmount\": 66252.36,\n                            \"currency\": {\n                                \"code\": \"AED\",\n                                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n                            },\n                            \"date\": \"2021-02-10T09:22:10Z\",\n                            \"description\": \"Online banking\",\n                            \"details\": \"Online banking\",\n                            \"reference\": \"\",\n                            \"type\": \"credit\"\n                        }\n                    ],\n                    \"type\": \"debit\"\n                }\n            ],\n            \"identity\": {\n                \"address\": {\n                    \"area\": \"Dubai\",\n                    \"building\": \"Burj Khalifa\",\n                    \"city\": \"Dubai\",\n                    \"country\": \"United Arab Emirates\",\n                    \"flat\": \"1204\",\n                    \"full\": \"1204 Burj Khalifa Dubai United Arab Emiratess\",\n                    \"poBox\": \"\",\n                    \"state\": \"Dubai\",\n                    \"zipCode\": \"\"\n                },\n                \"dateOfBirth\": \"2020-12-03T22:52:51Z\",\n                \"emailAddress\": \"mohoa@doe.com\",\n                \"identification\": [],\n                \"name\": \"Mohammad Omar Amr\",\n                \"nationality\": \"AE\",\n                \"numbers\": [\n                    {\n                        \"type\": \"mobile\",\n                        \"value\": \"971501988265\"\n                    }\n                ]\n            },\n            \"password\": \"pass\",\n            \"userUUID\": \"00acdbeb-c061-4116-9cf9-3061dbff78d0\",\n            \"username\": \"user\"\n        }\n    ],\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Sandbox User Sub Bank Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dashboard_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\",\r\n    \"newAccount\": {\r\n        \"name\": \"test account\",\r\n        \"accountType\": \"test\",\r\n        \"accountNumber\": \"0123456789\",\r\n        \"iban\": \"iban_0123456789\",\r\n        \"balance\": \"10\",\r\n        \"currency\": {\r\n            \"code\": \"AED\",\r\n            \"name\": \"AED\"\r\n        },\r\n        \"routingNumbers\": [{\r\n            \"type\": \"rn_type\",\r\n            \"value\": \"rn_value\"\r\n        }]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/apps/sandbox/account/add",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"apps",
+								"sandbox",
+								"account",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\",\r\n    \"newAccount\": {\r\n        \"name\": \"test account\",\r\n        \"accountType\": \"test\",\r\n        \"accountNumber\": \"0123456789\",\r\n        \"iban\": \"iban_0123456789\",\r\n        \"balance\": \"10\",\r\n        \"currency\": {\r\n            \"code\": \"AED\",\r\n            \"name\": \"AED\"\r\n        },\r\n        \"routingNumbers\": [{\r\n            \"type\": \"rn_type\",\r\n            \"value\": \"rn_value\"\r\n        }]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/apps/sandbox/account/add",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"apps",
+										"sandbox",
+										"account",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:21:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove Sandbox User Sub Bank Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dashboard_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\",\r\n    \"userAccountNumber\": \"0123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/apps/sandbox/account/remove",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"apps",
+								"sandbox",
+								"account",
+								"remove"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\",\r\n    \"userAccountNumber\": \"0123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/apps/sandbox/account/remove",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"apps",
+										"sandbox",
+										"account",
+										"remove"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:22:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove Sandbox User Beneficiary",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dashboard_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\",\r\n    \"benefAccountNumber\": \"1618210951741732300778\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/apps/sandbox/benefs/remove",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"apps",
+								"sandbox",
+								"benefs",
+								"remove"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\",\r\n    \"userAccountNumber\": \"0123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/apps/sandbox/account/remove",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"apps",
+										"sandbox",
+										"account",
+										"remove"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:22:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Sandbox User Sub Bank Account Balance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dashboard_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\",\r\n    \"accountNumber\": \"0123456789\",\r\n    \"newBalance\": 1100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/apps/sandbox/account/balance/set",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"apps",
+								"sandbox",
+								"account",
+								"balance",
+								"set"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appKey\": \"{{app_key}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bankID\": \"{{bank_id}}\",\r\n    \"accountNumber\": \"0123456789\",\r\n    \"newBalance\": 1100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/apps/sandbox/account/balance/set",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"apps",
+										"sandbox",
+										"account",
+										"balance",
+										"set"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:24:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Operations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dashboard_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"appKey\": \"{{app_key}}\",\n    \"skipDocs\": 0,\n    \"fromTime\": \"2021-07-29T16:00:25Z\",\n    \"toTime\": \"2022-06-17T07:58:22Z\",\n    \"resultSize\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/apps/operations/getAll",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"apps",
+								"operations",
+								"getAll"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appKey\": \"{{app_key}}\",\n    \"skipDocs\": 0,\n    \"fromTime\": \"2021-07-29T16:00:25Z\",\n    \"toTime\": \"2022-06-17T07:58:22Z\",\n    \"resultSize\": 500\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/apps/operations/getAll",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"apps",
+										"operations",
+										"getAll"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 10:35:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3152"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operations\": [\n        {\n            \"action\": \"get\",\n            \"appKey\": \"b44f2cae86a26302006c2cad8ae718fa66c33d6217fac79e72e90cad5a28523e\",\n            \"bankID\": \"DAPIBANK_AE_LIV\",\n            \"batchTransferDetails\": null,\n            \"endTime\": \"2022-06-16T10:33:10.936Z\",\n            \"errType\": \"\",\n            \"extraFields\": \"\",\n            \"isSandbox\": true,\n            \"operationID\": \"DAPIBANK_AE_LIV:f94f58bf-4118-4ec1-bff6-dc853e22d198\",\n            \"product\": \"metadata\",\n            \"startTime\": \"2022-06-16T10:33:10Z\",\n            \"status\": \"done\",\n            \"step\": 1,\n            \"store\": \"\",\n            \"subproduct\": \"accounts\",\n            \"transferDetails\": null,\n            \"userUUID\": \"DAPIBANK_AE_LIV:d81e08c3-2f89-44c2-8b93-aefe5da52c00\"\n        },\n        {\n            \"action\": \"create\",\n            \"appKey\": \"b44f2cae86a26302006c2cad8ae718fa66c33d6217fac79e72e90cad5a28523e\",\n            \"bankID\": \"DAPIBANK_AE_LIV\",\n            \"batchTransferDetails\": null,\n            \"endTime\": \"2022-06-16T10:33:11.443Z\",\n            \"errType\": \"SANDBOX_ACCOUNT_NOT_FOUND\",\n            \"extraFields\": \"\",\n            \"isSandbox\": true,\n            \"operationID\": \"DAPIBANK_AE_LIV:9a898e64-288e-4a94-89ca-b1233980eca9\",\n            \"product\": \"payment\",\n            \"startTime\": \"2022-06-16T10:33:10Z\",\n            \"status\": \"failed\",\n            \"step\": 0,\n            \"store\": \"\",\n            \"subproduct\": \"transfer\",\n            \"transferDetails\": null,\n            \"userUUID\": \"DAPIBANK_AE_LIV:d81e08c3-2f89-44c2-8b93-aefe5da52c00\"\n        },\n        {\n            \"action\": \"get\",\n            \"appKey\": \"b44f2cae86a26302006c2cad8ae718fa66c33d6217fac79e72e90cad5a28523e\",\n            \"bankID\": \"DAPIBANK_AE_LIV\",\n            \"batchTransferDetails\": null,\n            \"endTime\": \"2022-06-16T10:31:39.085Z\",\n            \"errType\": \"\",\n            \"extraFields\": \"\",\n            \"isSandbox\": true,\n            \"operationID\": \"DAPIBANK_AE_LIV:93dd0096-57d4-48e2-b6b1-e487815f22c9\",\n            \"product\": \"data\",\n            \"startTime\": \"2022-06-16T10:31:38Z\",\n            \"status\": \"done\",\n            \"step\": 0,\n            \"store\": \"\",\n            \"subproduct\": \"completeAccounts\",\n            \"transferDetails\": null,\n            \"userUUID\": \"DAPIBANK_AE_LIV:d81e08c3-2f89-44c2-8b93-aefe5da52c00\"\n        },\n        {\n            \"action\": \"create\",\n            \"appKey\": \"b44f2cae86a26302006c2cad8ae718fa66c33d6217fac79e72e90cad5a28523e\",\n            \"bankID\": \"DAPIBANK_AE_LIV\",\n            \"batchTransferDetails\": null,\n            \"endTime\": \"2022-06-16T10:31:36.755Z\",\n            \"errType\": \"\",\n            \"extraFields\": \"\",\n            \"isSandbox\": true,\n            \"operationID\": \"DAPIBANK_AE_LIV:6ab5a374-f3d7-40d7-8d2c-fa9db62a36ea\",\n            \"product\": \"auth\",\n            \"startTime\": \"2022-06-16T10:31:36Z\",\n            \"status\": \"done\",\n            \"step\": 0,\n            \"store\": \"\",\n            \"subproduct\": \"authentication\",\n            \"transferDetails\": null,\n            \"userUUID\": \"DAPIBANK_AE_LIV:d81e08c3-2f89-44c2-8b93-aefe5da52c00\"\n        },\n        {\n            \"action\": \"create\",\n            \"appKey\": \"b44f2cae86a26302006c2cad8ae718fa66c33d6217fac79e72e90cad5a28523e\",\n            \"bankID\": \"DAPIBANK_AE_LIV\",\n            \"batchTransferDetails\": null,\n            \"endTime\": \"2022-06-16T10:31:28.544Z\",\n            \"errType\": \"INVALID_CREDENTIALS\",\n            \"extraFields\": \"\",\n            \"isSandbox\": true,\n            \"operationID\": \"DAPIBANK_AE_LIV:815d4f4c-e629-4660-94cd-279dcd65d46c\",\n            \"product\": \"auth\",\n            \"startTime\": \"2022-06-16T10:31:28Z\",\n            \"status\": \"failed\",\n            \"step\": 0,\n            \"store\": \"\",\n            \"subproduct\": \"authentication\",\n            \"transferDetails\": null,\n            \"userUUID\": \"DAPIBANK_AE_LIV:7f25519a-35b8-4726-904c-bc96b6ce11ae\"\n        },\n        {\n            \"action\": \"create\",\n            \"appKey\": \"b44f2cae86a26302006c2cad8ae718fa66c33d6217fac79e72e90cad5a28523e\",\n            \"bankID\": \"DAPIBANK_AE_LIV\",\n            \"batchTransferDetails\": null,\n            \"endTime\": \"2022-06-16T10:29:57.960Z\",\n            \"errType\": \"\",\n            \"extraFields\": \"\",\n            \"isSandbox\": true,\n            \"operationID\": \"DAPIBANK_AE_LIV:5d52b701-cce5-47e3-a70b-6471949baf8c\",\n            \"product\": \"auth\",\n            \"startTime\": \"2022-06-16T10:29:57Z\",\n            \"status\": \"done\",\n            \"step\": 0,\n            \"store\": \"\",\n            \"subproduct\": \"authentication\",\n            \"transferDetails\": null,\n            \"userUUID\": \"DAPIBANK_AE_LIV:d81e08c3-2f89-44c2-8b93-aefe5da52c00\"\n        }\n    ],\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Exchange Token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();",
+									"pm.environment.set(\"access_token\", jsonData[\"accessToken\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"connectionID\": \"{{connection_id}}\",\r\n    \"accessCode\": \"{{access_code}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/auth/ExchangeToken",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"ExchangeToken"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"connectionID\": \"{{connection_id}}\",\r\n    \"accessCode\": \"{{access_code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth/ExchangeToken",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth",
+										"ExchangeToken"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:16:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "886"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBLZXkiOiJiNDRmMmNhZTg2YTI2MzAyMDA2YzJjYWQ4YWU3MThmYTY2YzMzZDYyMTdmYWM3OWU3MmU5MGNhZDVhMjg1MjNlIiwiYXV0aG9yaXphdGlvbnMiOiJ7XCJhdXRoXCI6dHJ1ZSwgXCJpZFwiOnRydWUsIFwiYWNjb3VudHNcIjp0cnVlLCBcImJhbGFuY2VcIjp0cnVlLCBcInRyc1wiOnRydWUsIFwiYmVuZWZcIjp0cnVlLCBcImJlbmVmQ3JlYXRlXCI6dHJ1ZSwgXCJ0cmFuc2ZlclwiOnRydWUsIFwiY2FyZHNcIjp0cnVlLCBcInN0YXRlbWVudHNcIjp0cnVlLCBcImFjY1R5cGVzXCI6W1wicmV0YWlsXCIsIFwiYml6XCJdLCBcImNvdW50cmllc1wiOltcIkFFXCIsIFwiRUdcIiwgXCJVU1wiXX0iLCJpYXQiOjE2NTUzNzgxNjgsImp0aSI6IjcyNDExZmE1LWM4ZDYtNGQ0Mi05ZDIxLWI1NDc4MmM1NTcxMSIsInV1aWQiOiJEQVBJQkFOS19BRV9MSVY6ZDgxZTA4YzMtMmY4OS00NGMyLThiOTMtYWVmZTVkYTUyYzAwIn0.PaBu1dKn3ABtx4EE3aBsXqxOzONCniftEtXK1J4UO1M\",\n    \"status\": \"done\",\n    \"success\": true,\n    \"tokenID\": \"72411fa5-c8d6-4d42-9d21-b54782c55711\",\n    \"userID\": \"DAPIBANK_AE_LIV:d81e08c3-2f89-44c2-8b93-aefe5da52c00\",\n    \"userSecret\": \"\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Data API",
+			"item": [
+				{
+					"name": "Identity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/data/identity/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"data",
+								"identity",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/data/identity/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"data",
+										"identity",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:19:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "491"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"identity\": {\n        \"address\": {\n            \"area\": \"Dubai\",\n            \"building\": \"Burj Khalifa\",\n            \"city\": \"Dubai\",\n            \"country\": \"United Arab Emirates\",\n            \"flat\": \"1204\",\n            \"full\": \"1204 Burj Khalifa Dubai United Arab Emiratess\",\n            \"state\": \"Dubai\"\n        },\n        \"dateOfBirth\": \"2020-12-03T22:52:51.765Z\",\n        \"emailAddress\": \"mohoa@doe.com\",\n        \"identification\": [],\n        \"name\": \"Mohammad Omar Amr\",\n        \"nationality\": \"AE\",\n        \"numbers\": [\n            {\n                \"type\": \"mobile\",\n                \"value\": \"971501988265\"\n            }\n        ]\n    },\n    \"operationID\": \"DAPIBANK_AE_LIV:dffa068f-6769-4180-ae4b-137d217d59da\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Accounts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();",
+									"if (jsonData[\"accounts\"].length > 0) {",
+									"    pm.environment.set(\"account_id\", jsonData[\"accounts\"][0][\"id\"]);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/data/accounts/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"data",
+								"accounts",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/data/accounts/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"data",
+										"accounts",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:19:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "672"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accounts\": [\n        {\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"iban\": \"DAPIBANKAELIV1655374817420002211944\",\n            \"id\": \"IEhvS8wxlAMKHtlwjbNeSnvJWvgzeuA6AubAAwZBWmvah33JuW6miTyRYDeDs1dieZGJNznHIHqoaSRekf5iJw==\",\n            \"isFavourite\": false,\n            \"name\": \"current\",\n            \"number\": \"1655374817420002211944\",\n            \"type\": \"current\"\n        },\n        {\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"iban\": \"iban_0123456789\",\n            \"id\": \"Ayb4NXpK0f8mZ81fEjAHPrSwsv+6avCvpkmmRcUmB/L+v5I6JzbH+njlyxPv91vMz6vLvBwQZHMsxI28Dxl+PA==\",\n            \"isFavourite\": false,\n            \"name\": \"test account\",\n            \"number\": \"0123456789\",\n            \"type\": \"test\"\n        }\n    ],\n    \"operationID\": \"DAPIBANK_AE_LIV:c2c40297-ab86-45cd-a601-d3c5c0d16b4b\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Card Balance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"cardID\": \"{{card_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/data/balance/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"data",
+								"balance",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"cardID\": \"{{card_id}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/data/balance/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"data",
+										"balance",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:20:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "316"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"balance\": {\n        \"amountDue\": 1856,\n        \"availableBalance\": 10033.86,\n        \"cardNumber\": \"XXXXXXXXXXXX5700\",\n        \"currency\": {\n            \"code\": \"AED\",\n            \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n        },\n        \"dueDate\": \"2021-06-04T00:00:00.000Z\",\n        \"outstandingBalance\": 4966\n    },\n    \"operationID\": \"DAPIBANK_AE_LIV:c91160c4-5678-42b4-af23-4f9de83f4a62\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Cards",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();",
+									"if (jsonData[\"cards\"].length > 0) {",
+									"    pm.environment.set(\"card_id\", jsonData[\"cards\"][0][\"id\"]);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"appSecret\": \"{{app_secret}}\",\n    \"userSecret\": \"{{user_secret}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/data/cards/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"data",
+								"cards",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appSecret\": \"{{app_secret}}\",\n    \"userSecret\": \"{{user_secret}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/data/cards/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"data",
+										"cards",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:19:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "781"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"cards\": [\n        {\n            \"amountDue\": 1856,\n            \"cardNumber\": \"XXXXXXXXXXXX5700\",\n            \"creditLimit\": 15000,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"dueDate\": \"2021-06-04T00:00:00.000Z\",\n            \"expiryDate\": \"2025-05-31T00:00:00.000Z\",\n            \"id\": \"wHEiWfIQtXIh6slGBuyJdjKsPKmTyiHktK/XFCImHRgQqBZau6I5+7Vjs619wS65siOJoEg2RDvORKSzKTuEDw==\",\n            \"name\": \"BASIC CREDIT\",\n            \"status\": \"active\",\n            \"type\": \"credit\"\n        },\n        {\n            \"cardNumber\": \"XXXXXXXXXXXX6153\",\n            \"creditLimit\": 15000,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"expiryDate\": \"2025-05-31T00:00:00.000Z\",\n            \"id\": \"gUOgxNgL3FnMA2GfQ11fiOmFY2nPjA/QR8qtUsAYlj9cO90KoNFokT18ICY/FCkTTj1UW3lJgWAgcJjJJOzV5Q==\",\n            \"name\": \"BASIC DEBIT\",\n            \"status\": \"active\",\n            \"type\": \"debit\"\n        }\n    ],\n    \"operationID\": \"DAPIBANK_AE_LIV:19d180d3-806b-46ff-b838-26a520557ea7\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Account Balance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"accountID\": \"{{account_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/data/balance/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"data",
+								"balance",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"accountID\": \"{{account_id}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/data/balance/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"data",
+										"balance",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:20:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "232"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"balance\": {\n        \"accountNumber\": \"1655374817420002211944\",\n        \"amount\": 50000,\n        \"currency\": {\n            \"code\": \"AED\",\n            \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n        }\n    },\n    \"operationID\": \"DAPIBANK_AE_LIV:4eabceac-e61d-4534-a435-e7c6d903cb0e\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Account Transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"accountID\": \"{{account_id}}\",\r\n    \"fromDate\": \"2021-06-01\",\r\n    \"toDate\": \"2021-07-12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/data/transactions/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"data",
+								"transactions",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"accountID\": \"{{account_id}}\",\r\n    \"fromDate\": \"2021-06-01\",\r\n    \"toDate\": \"2021-07-12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/data/transactions/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"data",
+										"transactions",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:20:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4079"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operationID\": \"DAPIBANK_AE_LIV:bcc4096f-c979-4e40-bd0b-9e338146f893\",\n    \"status\": \"done\",\n    \"success\": true,\n    \"transactions\": [\n        {\n            \"afterAmount\": 18581.66,\n            \"amount\": 2,\n            \"beforeAmount\": 18579.66,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-03T16:00:34.000Z\",\n            \"description\": \"Etisalat\",\n            \"details\": \"Bills\",\n            \"reference\": \"\",\n            \"type\": \"credit\"\n        },\n        {\n            \"afterAmount\": 18461.16,\n            \"amount\": 120.5,\n            \"beforeAmount\": 18581.66,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-06T20:04:02.000Z\",\n            \"description\": \"Art House Cafe\",\n            \"details\": \"Food and drink\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 18448,\n            \"amount\": 13.15,\n            \"beforeAmount\": 18461.16,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-14T14:31:27.000Z\",\n            \"description\": \"Waitrose\",\n            \"details\": \"Groceries\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 18398.68,\n            \"amount\": 49.31,\n            \"beforeAmount\": 18448,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-15T14:31:27.000Z\",\n            \"description\": \"Waitrose\",\n            \"details\": \"Groceries\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 18148.68,\n            \"amount\": 250,\n            \"beforeAmount\": 18398.68,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-18T12:03:31.000Z\",\n            \"description\": \"Social Transfer to Phu.\",\n            \"details\": \"Social Transfer\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 18113.68,\n            \"amount\": 35,\n            \"beforeAmount\": 18148.68,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-19T20:18:47.000Z\",\n            \"description\": \"Xtreme Zone\",\n            \"details\": \"Entertainment\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 18212.68,\n            \"amount\": 99,\n            \"beforeAmount\": 18113.68,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-20T00:26:11.000Z\",\n            \"description\": \"Social Transfer from Kate Moos.\",\n            \"details\": \"Social Transfer\",\n            \"reference\": \"\",\n            \"type\": \"credit\"\n        },\n        {\n            \"afterAmount\": 18192.68,\n            \"amount\": 20,\n            \"beforeAmount\": 18212.68,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-20T17:09:11.000Z\",\n            \"description\": \"Transfer to Apt Goal with One-shot saving rule.\",\n            \"details\": \"GOAL\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 18242.68,\n            \"amount\": 50,\n            \"beforeAmount\": 18192.68,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-24T16:43:06.000Z\",\n            \"description\": \"Social Transfer from Mary.\",\n            \"details\": \"Social Transfer\",\n            \"reference\": \"\",\n            \"type\": \"credit\"\n        },\n        {\n            \"afterAmount\": 18295.68,\n            \"amount\": 53,\n            \"beforeAmount\": 18242.68,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-24T16:43:15.000Z\",\n            \"description\": \"Social Transfer from Kate Doe.\",\n            \"details\": \"Social Transfer\",\n            \"reference\": \"\",\n            \"type\": \"credit\"\n        },\n        {\n            \"afterAmount\": 18270.23,\n            \"amount\": 25.45,\n            \"beforeAmount\": 18295.68,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-26T14:31:27.000Z\",\n            \"description\": \"Waitrose\",\n            \"details\": \"Groceries\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 23270.23,\n            \"amount\": 5000,\n            \"beforeAmount\": 18270.23,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-06-27T12:50:44.000Z\",\n            \"description\": \"General\",\n            \"details\": \"General\",\n            \"reference\": \"\",\n            \"type\": \"credit\"\n        },\n        {\n            \"afterAmount\": 23221.23,\n            \"amount\": 49,\n            \"beforeAmount\": 23270.23,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-07-02T19:22:05.000Z\",\n            \"description\": \"ROVE OUD METHA HOTEL\",\n            \"details\": \"Holiday\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 23802.46,\n            \"amount\": 581.23,\n            \"beforeAmount\": 23221.23,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-07-04T22:06:00.000Z\",\n            \"description\": \"Credit Card Payment\",\n            \"details\": \"Bank Payments\",\n            \"reference\": \"\",\n            \"type\": \"credit\"\n        },\n        {\n            \"afterAmount\": 23784.46,\n            \"amount\": 18,\n            \"beforeAmount\": 23802.46,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-07-09T18:40:00.000Z\",\n            \"description\": \"Jumeirah At Saadiyat\",\n            \"details\": \"Holiday\",\n            \"reference\": \"\",\n            \"type\": \"debit\"\n        },\n        {\n            \"afterAmount\": 25284.46,\n            \"amount\": 1500,\n            \"beforeAmount\": 23784.46,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-07-11T18:20:17.000Z\",\n            \"description\": \"Cash Deposit\",\n            \"details\": \"ATM\",\n            \"reference\": \"\",\n            \"type\": \"credit\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Card Transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"appSecret\": \"{{app_secret}}\",\n    \"userSecret\": \"{{user_secret}}\",\n    \"cardID\": \"{{card_id}}\",\n    \"fromDate\": \"2021-04-01\",\n    \"toDate\": \"2021-04-30\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/data/transactions/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"data",
+								"transactions",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appSecret\": \"{{app_secret}}\",\n    \"userSecret\": \"{{user_secret}}\",\n    \"cardID\": \"{{card_id}}\",\n    \"fromDate\": \"2021-04-01\",\n    \"toDate\": \"2021-04-30\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/data/transactions/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"data",
+										"transactions",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:21:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "367"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operationID\": \"DAPIBANK_AE_LIV:46be66d4-377a-42d6-ab25-ce545c47de69\",\n    \"status\": \"done\",\n    \"success\": true,\n    \"transactions\": [\n        {\n            \"afterAmount\": 10033.86,\n            \"amount\": 4966,\n            \"beforeAmount\": 14999.86,\n            \"currency\": {\n                \"code\": \"AED\",\n                \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n            },\n            \"date\": \"2021-04-12T07:13:17.301Z\",\n            \"description\": \"Online banking\",\n            \"details\": \"Online banking\",\n            \"reference\": \"\",\n            \"type\": \"credit\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Payment API",
+			"item": [
+				{
+					"name": "Transfer Autoflow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"senderID\": \"{{account_id}}\",\r\n    \"amount\": 125,\r\n    \"beneficiary\": {\r\n        \"name\": \"CITI Account\",\r\n        \"accountNumber\": \"1655378578643268365642\",\r\n        \"iban\": \"DAPIBANKAEENBD1655378578643268365642\",\r\n        \"swiftCode\": \"DAPIBANK_AE_CITI\",\r\n        \"type\": \"\",\r\n        \"address\": {\r\n            \"line1\": \"cairo\",\r\n            \"line2\": \"cairo\",\r\n            \"line3\": \"egypt\"\r\n        },\r\n        \"country\": \"EG\",\r\n        \"branchAddress\": \"cairo\",\r\n        \"branchName\": \"cairo\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/payment/transfer/autoflow",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payment",
+								"transfer",
+								"autoflow"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Transfer Autoflow",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"senderID\": \"{{account_id}}\",\r\n    \"amount\": 125,\r\n    \"beneficiary\": {\r\n        \"name\": \"CITI Account\",\r\n        \"accountNumber\": \"1655378578643268365642\",\r\n        \"iban\": \"DAPIBANKAEENBD1655378578643268365642\",\r\n        \"swiftCode\": \"DAPIBANK_AE_CITI\",\r\n        \"type\": \"\",\r\n        \"address\": {\r\n            \"line1\": \"cairo\",\r\n            \"line2\": \"cairo\",\r\n            \"line3\": \"egypt\"\r\n        },\r\n        \"country\": \"EG\",\r\n        \"branchAddress\": \"cairo\",\r\n        \"branchName\": \"cairo\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/payment/transfer/autoflow",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payment",
+										"transfer",
+										"autoflow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:45:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operationID\": \"DAPIBANK_AE_CITI:9668177b-548a-4588-97b4-e942233918fc\",\n    \"success\": true,\n    \"status\": \"done\",\n    \"reference\": \"1655379904805\",\n    \"hlAPIStep\": \"Transfer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Transfer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"amount\": 125,\r\n    \"senderID\": \"{{account_id}}\",\r\n    \"receiverID\": \"{{receiver_id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/payment/transfer/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payment",
+								"transfer",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"amount\": 125,\r\n    \"senderID\": \"{{account_id}}\",\r\n    \"receiverID\": \"{{receiver_id}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/payment/transfer/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payment",
+										"transfer",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:43:31 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "130"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operationID\": \"DAPIBANK_AE_CITI:68cf7bcf-e34d-4192-8e93-0b330172c6b4\",\n    \"reference\": \"1655379811460\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Beneficiary",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"name\": \"ENBD Account\",\r\n    \"accountNumber\": \"1655378578643268365642\",\r\n    \"iban\": \"DAPIBANKAEENBD1655378578643268365642\",\r\n    \"type\": \"local\",\r\n    \"address\": {\r\n        \"line1\": \"cairo\",\r\n        \"line2\": \"cairo\",\r\n        \"line3\": \"egypt\"\r\n    },\r\n    \"country\": \"AE\",\r\n    \"branchAddress\": \"Cairo\",\r\n    \"branchName\": \"Cairo\",\r\n    \"swiftCode\": \"DAPIBANK_AE_ENBD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/payment/beneficiaries/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payment",
+								"beneficiaries",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\",\r\n    \"name\": \"ENBD Account\",\r\n    \"accountNumber\": \"1655378578643268365642\",\r\n    \"iban\": \"DAPIBANKAEENBD1655378578643268365642\",\r\n    \"type\": \"local\",\r\n    \"address\": {\r\n        \"line1\": \"cairo\",\r\n        \"line2\": \"cairo\",\r\n        \"line3\": \"egypt\"\r\n    },\r\n    \"country\": \"AE\",\r\n    \"branchAddress\": \"Cairo\",\r\n    \"branchName\": \"Cairo\",\r\n    \"swiftCode\": \"DAPIBANK_AE_ENBD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/payment/beneficiaries/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payment",
+										"beneficiaries",
+										"create"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"operationID\": \"DAPIBANK_AE_ENBD:98c275b5-a263-4606-8483-8701ee206475\",\n    \"success\": true,\n    \"status\": \"done\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Beneficiaries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = pm.response.json();",
+									"if (jsonData[\"beneficiaries\"].length > 0) {",
+									"    pm.environment.set(\"receiver_id\", jsonData[\"beneficiaries\"][0][\"id\"]);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/payment/beneficiaries/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payment",
+								"beneficiaries",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/payment/beneficiaries/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payment",
+										"beneficiaries",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:31:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "362"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"beneficiaries\": [\n        {\n            \"accountNumber\": \"1655378578643268365642\",\n            \"iban\": \"DAPIBANKAEENBD1655378578643268365642\",\n            \"id\": \"AKMujI/sOCM5+491RNgIuoSc9j1hRaKU/IAmUGt8lkTDzav+aGVgDQ2dnLN58GCSpjiDSUzcrT3p0yow4fvM/Q==\",\n            \"name\": \"ENBD Account\",\n            \"status\": \"approved\",\n            \"type\": \"local\"\n        }\n    ],\n    \"operationID\": \"DAPIBANK_AE_ENBD:560068f9-5e57-4770-8e13-16926c62f557\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Metadata",
+			"item": [
+				{
+					"name": "Get Accounts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/metadata/accounts/get",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"metadata",
+								"accounts",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"appSecret\": \"{{app_secret}}\",\r\n    \"userSecret\": \"{{user_secret}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/metadata/accounts/get",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"metadata",
+										"accounts",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 16 Jun 2022 11:45:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "867"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"accountsMetadata\": {\n        \"address\": {\n            \"line1\": \"al falah\",\n            \"line2\": \"abu dhabi\",\n            \"line3\": \"united arab emirates\"\n        },\n        \"bankId\": \"DAPIBANK_AE_CITI\",\n        \"bankName\": \"Citibank\",\n        \"bankType\": \"retail\",\n        \"beneficiaryCoolDownPeriod\": {\n            \"unit\": \"hrs\",\n            \"value\": 0\n        },\n        \"branchAddress\": \"Al Khyeli building Al Falah street Abu Dhabi\",\n        \"branchName\": \"Citibank\",\n        \"country\": {\n            \"code\": \"AE\",\n            \"name\": \"UNITED ARAB EMIRATES\"\n        },\n        \"isCreateBeneficiaryEndpointRequired\": true,\n        \"sortCode\": null,\n        \"swiftCode\": \"DAPIBANK_AE_CITI\",\n        \"transactionRange\": {\n            \"unit\": \"months\",\n            \"value\": 12\n        },\n        \"transferBounds\": [\n            {\n                \"currency\": {\n                    \"code\": \"AED\",\n                    \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n                },\n                \"minimum\": 1,\n                \"type\": \"same\"\n            },\n            {\n                \"currency\": {\n                    \"code\": \"AED\",\n                    \"name\": \"UNITED ARAB EMIRATES DIRHAM\"\n                },\n                \"minimum\": 1,\n                \"type\": \"local\"\n            }\n        ],\n        \"willNewlyAddedBeneficiaryExistBeforeCoolDownPeriod\": true\n    },\n    \"operationID\": \"DAPIBANK_AE_CITI:1e752a92-f945-4651-8845-ce8ce326621c\",\n    \"status\": \"done\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "AppKey",
+			"value": ""
+		},
+		{
+			"key": "BaseURL",
+			"value": ""
+		},
+		{
+			"key": "DashboardAccessToken",
+			"value": ""
+		}
+	]
+}
