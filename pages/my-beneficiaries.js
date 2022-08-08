@@ -70,6 +70,8 @@ export default function MyBeneficiaries() {
     console.log("handleClick");
     if (ba) {
       const beneficiary = await ba.payment.getBeneficiaries();
+      console.log("b", beneficiary);
+
       setData(beneficiary);
     } else {
       console.log("ba is not set");
@@ -105,6 +107,7 @@ export default function MyBeneficiaries() {
       const beneficiaryResponse = await ba.payment.createBeneficiary(
         beneficiary
       );
+
       if (beneficiaryResponse.status == "failed") {
         setErrMessage(beneficiaryResponse.msg);
         return;

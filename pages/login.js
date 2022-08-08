@@ -13,8 +13,9 @@ export default function Login() {
   let dapiHandler = DAPI({
     onSuccessfulLogin: (bankAccount) => {
       const ba = bankAccount;
+      console.log("onSuccessfulLogin", ba);
+
       setBa(ba);
-      console.log("onSuccessfulLogin", bankAccount);
       ba.data.getIdentity().then((identityResponse) => {
         if (identityResponse.status === "done") {
           console.log("identity", identityResponse.identity);

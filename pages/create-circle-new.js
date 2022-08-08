@@ -6,11 +6,12 @@ import { database } from "../firebaseConfig";
 import { useBa } from "../context/BaContext";
 import { useRouter } from "next/router";
 
-export default function CreateCircle(props) {
+export default function CreateCircleNew(props) {
   let [data, SetData] = useState({
     name: "",
     description: "",
     amount: 0,
+    creator: { address: {} },
     users: [],
   });
   const { ba, setBa } = useBa();
@@ -31,6 +32,13 @@ export default function CreateCircle(props) {
       // router.push("/login");
     }
   };
+
+  useEffect(() => {
+    getBeneficiaries();
+    getAccounts();
+    getIdentity();
+  }, []);
+
   const getAccounts = async () => {
     console.log("handleClick");
     if (ba) {
@@ -55,18 +63,16 @@ export default function CreateCircle(props) {
     }
   };
 
-  useEffect(() => {
-    getBeneficiaries();
-    getAccounts();
-    getIdentity();
-  }, []);
-
   const [selectedUsers, setSelectedUsers] = useState([]);
 
   const addCircleToDatabase = (request) => {
     addDoc(collection(database, "circles"), {
       ...request,
-    });
+    })
+      .then(() => {
+        alert("Circle created successfully");
+      })
+      .catch(() => alert("Error creating circle"));
 
     // data.creatorId = "mrH1xA5holchguH9rknc";
     // data.creatorName = "Moeid Saleem";
@@ -93,6 +99,22 @@ export default function CreateCircle(props) {
       creatorAccountNumber: accounts.number,
       creatorName: identity.name,
       creatorEmail: identity.emailAddress,
+      creator: {
+        name: identity.name,
+        nickname: identity.name,
+        address: {
+          line1: identity.address.area,
+          line2: identity.address.state,
+          line3: identity.address.country,
+        },
+        country: "AE",
+        branchAddress: "Deira",
+        branchName: "Main Branch",
+        swiftCode: "DAPIBANK_AE_ENBD",
+        iban: accounts.iban,
+        accountNumber: accounts.number,
+        bankName: "ENBD",
+      },
     });
 
     // need to add creator details to the circle
@@ -110,7 +132,7 @@ export default function CreateCircle(props) {
     <Layout>
       <div className="flex">
         <div className=" justify-center">
-          <h1 className="text-2xl font-bold">Create a Circle</h1>
+          <h1 className="text-2xl font-bold">Create a Circle New</h1>
           <form className="" onSubmit={handleSubmit}>
             <div className="flex flex-col">
               <label className="text-gray-700">Circle Name</label>

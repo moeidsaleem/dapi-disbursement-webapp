@@ -7,13 +7,15 @@ import {
   query,
   where,
   getDocs,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
 
 import { useBa } from "../context/BaContext";
 
 import { useRouter } from "next/router";
 import { CashIcon, UserIcon } from "@heroicons/react/solid";
-export default function MyCircles() {
+export default function MyCirclesNew() {
   let [circles, setCircles] = useState([]);
   let [selectedCircle, setSelectedCircle] = useState(null);
   const [accounts, setAccounts] = useState(null);
@@ -54,12 +56,20 @@ export default function MyCircles() {
     }
   };
 
+  const updateCircleToDatabase = async (request) => {
+    const circleRef = doc(database, "circles", request.id);
+
+    await updateDoc(circleRef, {
+      users: selectedCircle.users,
+    });
+  };
+
   const handleSendMoney = async (e, amount) => {
     console.log("sending money", amount);
     console.log("sending circle", e);
     console.log("selected account", selectedAccount);
 
-    var transfer = {
+    /*     var transfer = {
       senderID: selectedAccount,
       receiverID: e.creatorId,
       accountNumber: e.creatorAccountNumber,
@@ -67,15 +77,34 @@ export default function MyCircles() {
       iban: e.creatorIban,
       amount: Number(amount),
       remarks: "simple-transfer",
+      beneificiary: e
+    }; */
+
+    var transfer = {
+      senderID: selectedAccount,
+      amount: Number(amount),
+      remarks: "new-payment",
+      beneficiary: e.creator,
     };
     console.log("transfer", transfer);
 
     if (ba) {
       console.log("transfer", transfer);
-      const autoTransferResponse = await ba.payment.createTransfer(transfer);
+      const autoTransferResponse = await ba.payment.transferAutoflow(transfer);
 
       if (autoTransferResponse.status == "done") {
         console.log("response", autoTransferResponse);
+        let index = selectedCircle.users.findIndex(
+          (item) => item.iban == accounts[0].iban
+        );
+        console.log("index", index);
+        selectedCircle.users[index].status = "paid";
+        updateCircleToDatabase(selectedCircle);
+        // selectedCircle.users[index].status = "paid";
+        // await updateDoc(collection(database, "circles"), selectedCircle.id, {
+        //   users: selectedCircle.users,
+        // });
+
         alert("Transfer Successful");
       } else {
         alert(autoTransferResponse.msg);
@@ -89,7 +118,7 @@ export default function MyCircles() {
       <div className="flex">
         <div className="flex border mx-20 p-20 rounded-lg">
           <div className=" justify-left">
-            <h1 className="text-2xl font-bold">My Circles</h1>
+            <h1 className="text-2xl font-bold">My Circles New</h1>
             <div className="flex flex-col">
               {circles.map(
                 (circle) => {
@@ -170,7 +199,9 @@ export default function MyCircles() {
                         Close Circle
                       </button>
                     </>
-                  ) : (
+                  ) : selectedCircle.users.find(
+                      (item) => item.status == "unpaid"
+                    ) ? (
                     <div
                       key={selectedCircle.id}
                       value={JSON.stringify(selectedCircle)}
@@ -186,6 +217,10 @@ export default function MyCircles() {
                       {selectedCircle.amount / selectedCircle.users.length}{" "}
                       <CashIcon className="h-6 w-6 inline mx-auto" />
                     </div>
+                  ) : (
+                    <button className="flex bg-blue-400 font-extrabold my-2 p-2 uppercase text-white rounded-lg hover:bg-black">
+                      Already Paid
+                    </button>
                   )}
                 </div>
               </div>

@@ -19,7 +19,7 @@ let menu = [
   },
   {
     name: "Create Circle",
-    href: "/create-circle",
+    href: "/create-circle-new",
     icon: <ViewGridAddIcon className="h-5 w-5" />,
   },
   {
@@ -29,7 +29,7 @@ let menu = [
   },
   {
     name: " My Circles",
-    href: "/my-circles",
+    href: "/my-circles-new",
     icon: <ViewGridIcon className="h-5 w-5" />,
   },
   {

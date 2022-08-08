@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=1080px, initial-scale=1.0" />
+    <title>DAPI</title>
+  </head>
+  <body>
+    <script src="https://cdn.dapi.com`/connect/v3/connector.js"></script>
+    <script>
+      var handler = Dapi.create({
+        environment: Dapi.environments.sandbox,
+        appKey:
+          "c280ebcaee96bcab7df6089393ff226b822d1e850d859aad3dba31afd4d8e011",
+        countries: ["AE"],
+        isExperimental: false,
+        onSuccess: (d) => console.log(d),
+        onFailure: (e) => console.log(e),
+        onReady: (r) => {
+          console.log("Ready!"), handler.open();
+        },
+      });
+    </script>
+  </body>
+</html>

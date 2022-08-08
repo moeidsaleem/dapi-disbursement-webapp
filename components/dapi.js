@@ -32,6 +32,7 @@ class LinkDapi extends Component {
       clientHeaders: {},
       clientBody: {},
       onSuccessfulLogin: (bankAccount) => {
+        console.log("bankAccount", bankAccount);
         let ba = bankAccount;
 
         ba.data.getAccounts().then((payload) => {
